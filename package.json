@@ -94,6 +94,7 @@
     "micro-memoize": "~4.0.9",
     "minimatch": "~3.0.4",
     "moment": "~2.25.3",
+    "morgan": "~1.10.0",
     "namespace-constants": "~1.0.1",
     "normalize.css": "~8.0.1",
     "passport": "~0.4.1",
