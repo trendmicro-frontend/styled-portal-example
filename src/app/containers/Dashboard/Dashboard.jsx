@@ -1,6 +1,7 @@
 import {
   Box,
   Flex,
+  Skeleton,
   Space,
   Stack,
   useColorMode,
@@ -8,18 +9,6 @@ import {
 import React from 'react';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
-
-const Skeleton = (props) => {
-  const { colorMode } = useColorMode();
-  const bg = {
-    dark: 'gray:90',
-    light: 'gray:10',
-  }[colorMode];
-
-  return (
-    <Box bg={bg} {...props} />
-  );
-};
 
 const Widget = (props) => {
   const { colorMode } = useColorMode();
@@ -73,8 +62,21 @@ const Widget2 = (props) => {
           <Skeleton width="50%" h="7x" mb="12x" />
         </Box>
         <Stack flex="none" direction="column" spacing="8x">
-          <Flex>
-            <Skeleton flex="none" width="16x" height="16x" />
+          <Flex align="center">
+            <Box flex="none">
+              <Skeleton variant="circle" width="16x" height="16x" />
+            </Box>
+            <Space width="5x" />
+            <Stack flex="1" direction="column" spacing="2x">
+              <Skeleton flex="1" />
+              <Skeleton flex="1" />
+              <Skeleton flex="1" />
+            </Stack>
+          </Flex>
+          <Flex align="center">
+            <Box flex="none">
+              <Skeleton variant="circle" width="16x" height="16x" />
+            </Box>
             <Space width="5x" />
             <Stack flex="1" direction="column" spacing="2x">
               <Skeleton flex="1" />
@@ -83,16 +85,9 @@ const Widget2 = (props) => {
             </Stack>
           </Flex>
           <Flex>
-            <Skeleton flex="none" width="16x" height="16x" />
-            <Space width="5x" />
-            <Stack flex="1" direction="column" spacing="2x">
-              <Skeleton flex="1" />
-              <Skeleton flex="1" />
-              <Skeleton flex="1" />
-            </Stack>
-          </Flex>
-          <Flex>
-            <Skeleton flex="none" width="16x" height="16x" />
+            <Box flex="none">
+              <Skeleton variant="circle" width="16x" height="16x" />
+            </Box>
             <Space width="5x" />
             <Stack flex="1" direction="column" spacing="2x">
               <Skeleton flex="1" />
@@ -103,13 +98,8 @@ const Widget2 = (props) => {
         </Stack>
         <Space flex="none" height="20x" />
         <Box flex="none">
-          <Skeleton width="50%" h="7x" mb="12x" />
+          <Skeleton width={320} h="7x" mb="12x" />
         </Box>
-        <Stack flex="1" direction="row" spacing="6x">
-          <Skeleton flex="1" width="24x" height="24x" />
-          <Skeleton flex="1" width="24x" height="24x" />
-          <Skeleton flex="1" width="24x" height="24x" />
-        </Stack>
       </Flex>
     </Widget>
   );
