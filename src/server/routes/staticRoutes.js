@@ -1,5 +1,5 @@
 import express from 'express';
-import passport from 'passport';
+//import passport from 'passport';
 import serveStatic from 'serve-static';
 import store from '../store';
 
@@ -9,7 +9,7 @@ const router = express.Router();
 const staticRoot = store.get('server.staticRoot');
 
 router.use(
-  passport.authenticate('jwt', { session: false }),
+  //passport.authenticate('jwt', { session: false }),
   serveStatic(staticRoot),
 );
 

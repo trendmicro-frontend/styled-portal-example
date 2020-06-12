@@ -1,8 +1,8 @@
 import express from 'express';
 import { setupAuthenticationStrategy } from '../auth';
-import authRoutes from './authRoutes';
-import apiRoutes from './apiRoutes';
-import proxyRoutes from './proxyRoutes';
+import apiRoutes from './api';
+//import authRoutes from './authRoutes';
+//import proxyRoutes from './proxyRoutes';
 import staticRoutes from './staticRoutes';
 
 setupAuthenticationStrategy();
@@ -10,13 +10,13 @@ setupAuthenticationStrategy();
 const router = express.Router();
 
 // Authentication routes
-router.use(authRoutes);
+//router.use(authRoutes);
+
+// Proxy requests to the backend API server endpoint
+//router.use('/proxy', proxyRoutes);
 
 // All routes exported from `apiRoutes` will get placed under the `/api` path.
 router.use('/api', apiRoutes);
-
-// Proxy requests to the API server endpoint
-router.use('/proxy', proxyRoutes);
 
 // Static routes
 router.use(staticRoutes);
