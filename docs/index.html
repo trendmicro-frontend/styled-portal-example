@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title></title><meta name="description" content=""><meta name="viewport" content="width=device-width,initial-scale=1"><style>@keyframes __loading-spinner__ {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+#loading > .spinner {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 15px;
+    position: relative;
+    border: 2px solid rgba(129, 50, 50, 0.2);
+    border-radius: 50%;
+    border-left-color: rgba(0, 0, 0, 0.8);
+    animation: __loading-spinner__ 1s infinite linear;
+    font-size: 1rem;
+}</style><link href="app.css?_=1591933244317" rel="stylesheet"></head><body><div id="loading"><div class="spinner"></div></div><div id="viewport"></div><script src="polyfill.1b086ffb34979a9cb184.bundle.js?_=1591933244317"></script><script src="app.1b086ffb34979a9cb184.bundle.js?_=1591933244317"></script></body></html>
