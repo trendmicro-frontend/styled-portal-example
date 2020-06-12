@@ -1,0 +1,6 @@
+{
+    "This field is required.": "This field is required.",
+    "The value must be at least {{min}}.": "The value must be at least {{min}}.",
+    "The value must be less than or equal to {{max}}.": "The value must be less than or equal to {{max}}.",
+    "Specify a number between {{min}} and {{max}}.": "Specify a number between {{min}} and {{max}}."
+}

@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+const findImports = require('find-imports');
+const _pick = require('lodash/pick');
+const _uniq = require('lodash/uniq');
+
+const files = [
+  'src/server/**/*.{js,jsx}',
+];
+
+const resolvedImports = findImports(files, {
+  flatten: true,
+});
+
+const deps = _uniq([
+  // e.g. 'lodash/get' → 'lodash'
+  ...resolvedImports.map(x => x.split('/')[0]),
+]).sort();
+
+// Copy necessary properties from 'package.json' to 'src/package.json'
+const rootPackage = require('../package.json');
+const serverPackage = require('../src/server/package.json');
+
+//serverPackage.name = rootPackage.name; // Exclude the name field
+serverPackage.version = rootPackage.version;
+serverPackage.homepage = rootPackage.homepage;
+serverPackage.author = rootPackage.author;
+serverPackage.license = rootPackage.license;
+serverPackage.repository = rootPackage.repository;
+serverPackage.dependencies = _pick(rootPackage.dependencies, deps);
+
+const target = path.resolve(__dirname, '../src/server/package.json');
+const content = JSON.stringify(serverPackage, null, 2);
+fs.writeFileSync(target, content + '\n', 'utf8');

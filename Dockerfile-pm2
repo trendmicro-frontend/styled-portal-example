@@ -1,0 +1,22 @@
+FROM node:12.16-alpine
+
+ENV NODE_ENV production
+
+RUN apk add --no-cache bash curl
+
+RUN mkdir -p /root/portal
+
+COPY ./ecosystem.config.js /root/portal/ecosystem.config.js
+COPY ./dist/portal/app /root/portal/app
+COPY ./dist/portal/server /root/portal/server
+
+WORKDIR /root/portal/server
+
+RUN yarn --production
+RUN yarn global add --silent pm2
+
+WORKDIR /root/portal
+
+EXPOSE 80
+
+CMD ["pm2-runtime", "ecosystem.config.js"]
